@@ -1,0 +1,19 @@
+Expected output when every task is complete
+
+Test command, run in starter/:
+  mvn -q -o test
+
+Terminal: no output, and the command exits with status 0.
+Quiet mode (-q) prints only problems, so silence means every test passed.
+
+Test report, starter/target/surefire-reports/tickets.TicketTest.txt, begins:
+  Tests run: 7, Failures: 0, Errors: 0, Skipped: 0
+
+Program output, from java -cp target/classes tickets.Ticket run in starter/ after the tests:
+  New: NT-1 [NORMAL] Printer jam (open)
+  SLA: next day
+  Hours after escalate: 4
+  Done: NT-1 [URGENT] Printer jam (closed)
+  History: escalated; closed
+  Equal tickets: true
+  Same object: false
