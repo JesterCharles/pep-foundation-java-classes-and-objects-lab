@@ -72,8 +72,13 @@ That is why the tests can use JUnit while your `Ticket` class cannot: test-scope
    - A null `id` or `priority` fails with `Objects.requireNonNull(value, "name")`. Add `import java.util.Objects;` at the top of the file.
    - A `title` that is null or blank fails with `throw new IllegalArgumentException("title must not be blank")`.
 4. A new ticket starts open: set `this.open = true;`.
-5. If you see `variable id might not have been initialized`, a `final` field is not assigned on every path through the constructor.
-6. While it is wrong, you see lines such as `Task 1: a null id must be rejected with Objects.requireNonNull`.
+5. While it is wrong, you see lines such as `Task 1: a null id must be rejected with Objects.requireNonNull`.
+
+<details><summary>Hint</summary>
+
+If you see `variable id might not have been initialized`, a `final` field is not assigned on every path through the constructor.
+
+</details>
 
 ### Task 2: getters
 
@@ -93,8 +98,14 @@ That is why the tests can use JUnit while your `Ticket` class cannot: test-scope
 
 1. `close()` sets the ticket to closed and records the event `"closed"` in the `events` list. `escalate()` raises the priority to `Priority.URGENT` and records `"escalated"`.
 2. `slaLabel()` chooses the promise with a switch expression over `getPriority()`: `LOW` is `"same week"`, `NORMAL` is `"next day"`, and `URGENT` is `"today"`.
-   A switch over an enum needs no `default` once every constant is covered. If the switch does not compile, list all three cases.
+   A switch over an enum needs no `default` once every constant is covered.
 3. The tests also check that closing one ticket leaves another ticket open: each object has its own fields.
+
+<details><summary>Hint</summary>
+
+If the switch does not compile, list all three cases.
+
+</details>
 
 ### Task 5: toString
 
