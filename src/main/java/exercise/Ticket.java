@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * TODO, one at a time; each gives the ticket one more piece of real behavior.
  * The visible tests (Run Tests) and the held-out tests (run on Submit) create
  * tickets and check only their visible behavior.
- * The lab instructions list the steps for every task. main is complete: it walks one
+ * The lab README lists the steps for every task. main is complete: it walks one
  * ticket through its life and prints what it sees.
  */
 public class Ticket {
