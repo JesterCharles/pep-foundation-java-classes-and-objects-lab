@@ -9,16 +9,17 @@ In seven linked tasks across `Ticket.java` and the enum `Priority.java`, you pra
 1. Open the lab project. The files you edit are in `src/main/java/exercise/`; the checklist below names them.
 2. Select **Run Tests** before you change anything.
 
-   **All 7 tests fail at first. That is expected: the TODOs are not done yet.**
+   **All 7 visible tests fail at first. That is expected: the TODOs are not done yet.**
    Every failure message starts with its task number, such as `Task 1:`.
 3. Work through the checklist below in order. After each task, select **Run Tests** again and read the remaining `Task N:` messages.
-4. **You are finished when all 7 tests pass.** Then select **Submit**.
+4. **You are finished when all 7 visible tests pass.** Then select **Submit**.
+   Submitting also runs held-out tests you can't see.
 
 ```
 OPEN project -> RUN TESTS: 7 fail (expected)
   -> READ the "Task N:" messages -> EDIT the next TODO -> RUN TESTS again
   -> Ticket.java (Tasks 1-2) -> Priority.java (3) -> Ticket.java (4-7)
-  -> SUBMIT when all 7 tests pass
+  -> SUBMIT when all 7 visible tests pass
 ```
 
 In words: open the project, run the tests, read which tasks fail, complete one task's TODO, run the tests again, and submit when they all pass.
@@ -36,12 +37,13 @@ Every task is marked with a `TODO` comment in one of these two files in `src/mai
 - [ ] Task 7: `Ticket.java`, `history` (`StringBuilder`)
 
 A task is done when no failure message starts with its number.
-Edit only `Ticket.java` and `Priority.java`. The tests in `src/test/java/exercise/` are restored to their original state before your work is graded, so changes to them do not count. Leave the build file `pom.xml` and `expected/test-summary.txt` as they are.
+Edit only `Ticket.java` and `Priority.java`. The tests in `src/test/java/exercise/` are restored to their original state before your work is graded, so changes to them do not count. Leave the build file `pom.xml` as it is.
 
 ## Task steps
 
 Each `TODO` comment says exactly what the code must do.
 The tests create tickets and check only their visible behavior.
+Run Tests runs the visible tests. Submit also runs held-out tests you can't see: they try more inputs, including edge cases, so make every method do what its `TODO` comment says, not only what the visible tests try.
 
 Before you code, open `pom.xml`. Its JUnit dependency carries `<scope>test</scope>`.
 That is why the tests can use JUnit while your `Ticket` class cannot: test-scope dependencies exist only while tests compile and run, and they never ship with the program.
@@ -81,7 +83,7 @@ If you see `variable id might not have been initialized`, a `final` field is not
 1. `close()` sets the ticket to closed and records the event `"closed"` in the `events` list. `escalate()` raises the priority to `Priority.URGENT` and records `"escalated"`.
 2. `slaLabel()` chooses the promise with a switch expression over `getPriority()`: `LOW` is `"same week"`, `NORMAL` is `"next day"`, and `URGENT` is `"today"`.
    A switch over an enum needs no `default` once every constant is covered.
-3. The tests also check that closing one ticket leaves another ticket open: each object has its own fields.
+3. The held-out tests also check that closing one ticket leaves another ticket open: each object has its own fields.
 
 <details><summary>Hint</summary>
 
@@ -130,7 +132,17 @@ mvn -q compile
 java -cp target/classes exercise.Ticket
 ```
 
-`expected/test-summary.txt` shows the finished result, including the seven lines the program prints.
+When every task is done, it prints:
+
+```
+New: NT-1 [NORMAL] Printer jam (open)
+SLA: next day
+Hours after escalate: 4
+Done: NT-1 [URGENT] Printer jam (closed)
+History: escalated; closed
+Equal tickets: true
+Same object: false
+```
 
 ## Troubleshooting
 
