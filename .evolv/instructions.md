@@ -6,7 +6,7 @@ In seven linked tasks across `Ticket.java` and the enum `Priority.java`, you pra
 
 ## Quick start
 
-1. Open the lab project. The files you edit are in `src/main/java/tickets/`; the checklist below names them.
+1. Open the lab project. The files you edit are in `src/main/java/exercise/`; the checklist below names them.
 2. Select **Run Tests** before you change anything.
 
    **All 7 tests fail at first. That is expected: the TODOs are not done yet.**
@@ -25,7 +25,7 @@ In words: open the project, run the tests, read which tasks fail, complete one t
 
 ## Checklist
 
-Every task is marked with a `TODO` comment in one of these two files in `src/main/java/tickets/`:
+Every task is marked with a `TODO` comment in one of these two files in `src/main/java/exercise/`:
 
 - [ ] Task 1: `Ticket.java`, the constructor (validation)
 - [ ] Task 2: `Ticket.java`, the getters (encapsulation)
@@ -36,7 +36,7 @@ Every task is marked with a `TODO` comment in one of these two files in `src/mai
 - [ ] Task 7: `Ticket.java`, `history` (`StringBuilder`)
 
 A task is done when no failure message starts with its number.
-Edit only `Ticket.java` and `Priority.java`. The tests in `src/test/java/tickets/` are restored to their original state before your work is graded, so changes to them do not count. Leave the build file `pom.xml` and `expected/test-summary.txt` as they are.
+Edit only `Ticket.java` and `Priority.java`. The tests in `src/test/java/exercise/` are restored to their original state before your work is graded, so changes to them do not count. Leave the build file `pom.xml` and `expected/test-summary.txt` as they are.
 
 ## Task steps
 
@@ -127,7 +127,7 @@ The class walks one ticket through its life. In a terminal, from the project fol
 
 ```
 mvn -q compile
-java -cp target/classes tickets.Ticket
+java -cp target/classes exercise.Ticket
 ```
 
 `expected/test-summary.txt` shows the finished result, including the seven lines the program prints.

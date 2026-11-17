@@ -1,4 +1,4 @@
-package tickets;
+package exercise;
 
 import java.util.ArrayList;
 

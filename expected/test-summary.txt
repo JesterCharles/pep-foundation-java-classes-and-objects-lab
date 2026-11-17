@@ -7,10 +7,10 @@ From a terminal, the same check is:
 Result: all 7 tests pass.
 In a terminal, quiet mode (-q) prints only problems, so no output means every test passed.
 
-Test report, target/surefire-reports/tickets.TicketTest.txt, contains the line:
+Test report, target/surefire-reports/exercise.VisibleTests.txt, contains the line:
   Tests run: 7, Failures: 0, Errors: 0, Skipped: 0
 
-Program output, from java -cp target/classes tickets.Ticket run in the project folder after the tests:
+Program output, from java -cp target/classes exercise.Ticket run in the project folder after the tests:
   New: NT-1 [NORMAL] Printer jam (open)
   SLA: next day
   Hours after escalate: 4

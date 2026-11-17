@@ -1,4 +1,4 @@
-package tickets;
+package exercise;
 
 /**
  * Task 3: the priority of a support ticket, as an enum.

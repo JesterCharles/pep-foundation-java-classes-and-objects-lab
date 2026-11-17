@@ -1,4 +1,4 @@
-package tickets;
+package exercise;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -17,7 +17,7 @@ import org.junit.jupiter.api.TestMethodOrder;
  * object's state changes.
  */
 @TestMethodOrder(MethodOrderer.MethodName.class)
-class TicketTest {
+class VisibleTests {
 
     @Test
     void task1Constructor() {
