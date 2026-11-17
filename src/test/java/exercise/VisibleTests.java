@@ -79,7 +79,11 @@ class VisibleTests {
                 () -> assertNotEquals(a, c, "Task 6: different ids are different tickets"),
                 () -> assertFalse(Ticket.sameTicket(a, b),
                         "Task 6: equal tickets are still two separate objects, so == is false"),
-                () -> assertTrue(Ticket.sameTicket(a, a), "Task 6: a == a"));
+                () -> assertTrue(Ticket.sameTicket(a, a), "Task 6: a == a"),
+                () -> assertEquals(a.hashCode(), b.hashCode(),
+                        "Task 6: equal tickets must have equal hash codes"),
+                () -> assertNotEquals(a, "NT-1", "Task 6: a ticket never equals a plain string"),
+                () -> assertFalse(a.equals(null), "Task 6: equals(null) must be false, not an error"));
     }
 
     @Test

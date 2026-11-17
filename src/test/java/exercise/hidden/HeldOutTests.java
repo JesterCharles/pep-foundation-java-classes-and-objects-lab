@@ -2,8 +2,6 @@ package exercise.hidden;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -13,7 +11,7 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
-/** Held-out tests: graded on submit, never shown to the learner. Edge cases for every task. */
+/** Held-out tests: graded on submit, never shown to the learner. Edge cases for Tasks 1-5 and 7. */
 @TestMethodOrder(MethodOrderer.MethodName.class)
 class HeldOutTests {
 
@@ -61,17 +59,6 @@ class HeldOutTests {
         jam.close();
         assertEquals("NT-1 [URGENT] Printer jam (closed)", jam.toString(),
                 "Task 5: toString() after close()");
-    }
-
-    @Test
-    void task6EqualityEdgeCases() {
-        Ticket a = new Ticket("NT-1", "Printer jam", Priority.NORMAL);
-        Ticket b = new Ticket("NT-1", "Printer jam, second report", Priority.LOW);
-        assertAll(
-                () -> assertEquals(a.hashCode(), b.hashCode(),
-                        "Task 6: equal tickets must have equal hash codes"),
-                () -> assertNotEquals(a, "NT-1", "Task 6: a ticket never equals a plain string"),
-                () -> assertFalse(a.equals(null), "Task 6: equals(null) must be false, not an error"));
     }
 
     @Test
