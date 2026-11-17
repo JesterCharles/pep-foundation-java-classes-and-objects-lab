@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * priority, open/closed state and event history. Complete the tasks marked
  * TODO, one at a time; each gives the ticket one more piece of real behavior.
  * The public tests create tickets and check only their visible behavior.
- * The README lists the steps for every task. main is complete: it walks one
+ * The lab instructions list the steps for every task. main is complete: it walks one
  * ticket through its life and prints what it sees.
  */
 public class Ticket {
