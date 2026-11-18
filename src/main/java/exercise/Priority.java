@@ -1,4 +1,4 @@
-package tickets;
+package exercise;
 
 /**
  * Task 3: the priority of a support ticket, as an enum.
@@ -16,7 +16,7 @@ public enum Priority {
     // NORMAL 24, URGENT 4. Add a private final int field, a constructor that
     // sets it, write the hours in parentheses behind each constant above,
     // and return the field here.
-    int responseHours() {
+    public int responseHours() {
         return -1; // TODO: return the constant's own response time
     }
 }

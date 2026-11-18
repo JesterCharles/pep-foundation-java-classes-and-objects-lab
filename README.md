@@ -6,44 +6,27 @@ In seven linked tasks across `Ticket.java` and the enum `Priority.java`, you pra
 
 ## Quick start
 
-The lab needs JDK 25 and Apache Maven 3.9 or later in the terminal. Troubleshooting shows how to check.
+1. Open the lab project. The files you edit are in `src/main/java/exercise/`; the checklist below names them.
+2. Select **Run Tests** before you change anything.
 
-1. Open the lab project you were given in VS Code, then open its integrated terminal: **Terminal > New Terminal**.
-2. Go into the project folder. Every command in this lab runs there:
-
-   ```
-   cd starter
-   ```
-
-3. Before the first test run, download the lab's libraries once. This needs the internet, and prints nothing when it works:
-
-   ```
-   mvn -q dependency:go-offline
-   ```
-
-4. Run the tests before you change anything:
-
-   ```
-   mvn -q -o test
-   ```
-
-   **All 7 tests fail at first. That is expected: the TODOs are not done yet.**
-   The output ends with `Tests run: 7, Failures: 7`, and every failure line starts with its task number, such as `Task 1:`.
-5. Work through the checklist below in order. After each task, run `mvn -q -o test` again and read the remaining `Task N:` lines.
-6. **You are finished when `mvn -q -o test` prints nothing at all.**
+   **All 7 visible tests fail at first. That is expected: the TODOs are not done yet.**
+   Every failure message starts with its task number, such as `Task 1:`.
+3. Work through the checklist below in order. After each task, select **Run Tests** again and read the remaining `Task N:` messages.
+4. **You are finished when all 7 visible tests pass.** Then select **Submit**.
+   Submitting also runs held-out tests you can't see.
 
 ```
-OPEN project -> cd starter -> setup (once) -> RUN tests: 7 fail (expected)
-  -> READ the "Task N:" lines -> EDIT the next TODO -> RUN tests again
+OPEN project -> RUN TESTS: 7 fail (expected)
+  -> READ the "Task N:" messages -> EDIT the next TODO -> RUN TESTS again
   -> Ticket.java (Tasks 1-2) -> Priority.java (3) -> Ticket.java (4-7)
-  -> STOP when the test run prints nothing
+  -> SUBMIT when all 7 visible tests pass
 ```
 
-In words: open the project, run the tests, read which tasks fail, complete one task's TODO, run the tests again, and stop when they print nothing.
+In words: open the project, run the tests, read which tasks fail, complete one task's TODO, run the tests again, and submit when they all pass.
 
 ## Checklist
 
-Every task is marked with a `TODO` comment in one of these two files in `starter/src/main/java/tickets/`:
+Every task is marked with a `TODO` comment in one of these two files in `src/main/java/exercise/`:
 
 - [ ] Task 1: `Ticket.java`, the constructor (validation)
 - [ ] Task 2: `Ticket.java`, the getters (encapsulation)
@@ -53,15 +36,16 @@ Every task is marked with a `TODO` comment in one of these two files in `starter
 - [ ] Task 6: `Ticket.java`, `equals` and `hashCode` (equality)
 - [ ] Task 7: `Ticket.java`, `history` (`StringBuilder`)
 
-A task is done when no failure line starts with its number.
-Edit only `Ticket.java` and `Priority.java`. The tests in `tests/tickets/`, the build file `starter/pom.xml` and `expected/test-summary.txt` stay as they are.
+A task is done when no failure message starts with its number.
+Edit only `Ticket.java` and `Priority.java`. The tests in `src/test/java/exercise/` are restored to their original state before your work is graded, so changes to them do not count. Leave the build file `pom.xml` as it is.
 
 ## Task steps
 
 Each `TODO` comment says exactly what the code must do.
 The tests create tickets and check only their visible behavior.
+Run Tests runs the visible tests. Submit also runs held-out tests you can't see: they try more inputs, including edge cases, so make every method do what its `TODO` comment says, not only what the visible tests try.
 
-Before you code, open `starter/pom.xml`. Its JUnit dependency carries `<scope>test</scope>`.
+Before you code, open `pom.xml`. Its JUnit dependency carries `<scope>test</scope>`.
 That is why the tests can use JUnit while your `Ticket` class cannot: test-scope dependencies exist only while tests compile and run, and they never ship with the program.
 
 ### Task 1: the constructor
@@ -72,7 +56,7 @@ That is why the tests can use JUnit while your `Ticket` class cannot: test-scope
    - A null `id` or `priority` fails with `Objects.requireNonNull(value, "name")`. Add `import java.util.Objects;` at the top of the file.
    - A `title` that is null or blank fails with `throw new IllegalArgumentException("title must not be blank")`.
 4. A new ticket starts open: set `this.open = true;`.
-5. While it is wrong, you see lines such as `Task 1: a null id must be rejected with Objects.requireNonNull`.
+5. While it is wrong, you see messages such as `Task 1: a null id must be rejected with Objects.requireNonNull`.
 
 <details><summary>Hint</summary>
 
@@ -99,7 +83,7 @@ If you see `variable id might not have been initialized`, a `final` field is not
 1. `close()` sets the ticket to closed and records the event `"closed"` in the `events` list. `escalate()` raises the priority to `Priority.URGENT` and records `"escalated"`.
 2. `slaLabel()` chooses the promise with a switch expression over `getPriority()`: `LOW` is `"same week"`, `NORMAL` is `"next day"`, and `URGENT` is `"today"`.
    A switch over an enum needs no `default` once every constant is covered.
-3. The tests also check that closing one ticket leaves another ticket open: each object has its own fields.
+3. The held-out tests also check that closing one ticket leaves another ticket open: each object has its own fields.
 
 <details><summary>Hint</summary>
 
@@ -131,7 +115,7 @@ If the switch does not compile, list all three cases.
 
 A passing run shows the class behaves correctly.
 It does not check which Java constructs your code uses, so compare your code with each task's steps yourself.
-`COMPILATION ERROR` means the code does not compile yet. A `Failures:` count with `Task N:` lines means it compiles but behaves wrongly.
+`COMPILATION ERROR` means the code does not compile yet. Failing tests with `Task N:` messages mean it compiles but behaves wrongly.
 
 ## Using an AI assistant
 
@@ -139,26 +123,27 @@ If you use an AI assistant, ask it to explain, not to answer.
 "Why does my switch over an enum not compile?" teaches you the rule; "write the Ticket class for me" does not.
 Check any explanation with a test run before you trust it.
 
-## Run the program
+## Run the program (optional)
 
-The class walks one ticket through its life. From `starter`:
+The class walks one ticket through its life. In a terminal, from the project folder:
 
 ```
-mvn -q -o compile
-java -cp target/classes tickets.Ticket
+mvn -q compile
+java -cp target/classes exercise.Ticket
 ```
 
-`expected/test-summary.txt` shows the finished result, including the seven lines the program prints.
+When every task is done, it prints:
+
+```
+New: NT-1 [NORMAL] Printer jam (open)
+SLA: next day
+Hours after escalate: 4
+Done: NT-1 [URGENT] Printer jam (closed)
+History: escalated; closed
+Equal tickets: true
+Same object: false
+```
 
 ## Troubleshooting
 
-- **`there is no POM in this directory`.** The terminal is not in `starter`. From the lab folder, run `cd starter` and try again.
 - **`COMPILATION ERROR`.** Your code does not compile yet. Maven names the file, then `[line,column]`, then the problem. Fix that line and run the tests again.
-- **`mvn: command not found`, or `'mvn' is not recognized`.** Maven's `bin` folder is not on your `PATH`. Add it, then open a new terminal.
-- **`mvn -v` shows a Java version other than 25, or you see `release version 25 not supported`.** Maven uses the JDK named by `JAVA_HOME` when it is set, otherwise the `java` on your `PATH`. Set `JAVA_HOME` to your JDK 25 folder, or unset it, then open a new terminal. Check with `java -version` and `mvn -v`.
-- **`Cannot access central in offline mode`, or a missing artifact.** The setup step has not finished. Run `mvn -q dependency:go-offline` once while online.
-
-## Cleanup (optional)
-
-Maven writes only the `starter/target` folder, and Git already ignores it.
-To delete it, run `rm -rf target` from `starter`. In Windows PowerShell, run `Remove-Item -Recurse -Force target`.
